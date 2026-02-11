@@ -1,0 +1,23 @@
+<main style="max-width: 32rem; margin: 2rem auto; padding: 0 1rem;">
+  <h1>Import characters</h1>
+
+  <% if flash[:notice].present? %>
+    <p style="color: green;"><%= flash[:notice] %></p>
+  <% end %>
+  <% if flash[:alert].present? %>
+    <p style="color: #c00;"><%= flash[:alert] %></p>
+  <% end %>
+
+  <%= form_with url: import_path, method: :post, local: true, multipart: true do |f| %>
+    <p>
+      <%= f.file_field :file, accept: ".csv,text/csv,text/plain" %>
+    </p>
+    <p>
+      <%= f.submit "Import" %>
+    </p>
+  <% end %>
+
+  <p style="color: #666; font-size: 0.9rem;">
+    CSV must have headers: Name, Location, Species, Gender, Affiliations. Weapon and Vehicle optional. Rows with empty Affiliations or missing required fields are skipped.
+  </p>
+</main>
