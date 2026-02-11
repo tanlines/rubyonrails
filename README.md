@@ -77,7 +77,7 @@ Implemented in `Api::PeopleController#index`:
 
 - Query params:
   - `page` (1-based, defaults to `1`)
-  - `per_page` (defaults to `100`, capped at `100`)
+  - `per_page` (defaults to `10`, capped at `100`)
   - `sort` (allowed: `first_name`, `last_name`, `species`, `gender`, `weapon`, `vehicle`)
   - `direction` (`asc` or `desc`)
   - `q` free-text search across people, locations, and affiliations
