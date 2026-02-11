@@ -56,6 +56,16 @@ class CsvImportService
     end
 
     first_name, last_name = split_name(name)
+    if last_name.blank?
+      @skipped << { line: line_num, reason: "missing last name" }
+      return
+    end
+
+    if Person.exists?(first_name: first_name, last_name: last_name)
+      @skipped << { line: line_num, reason: "duplicate: person with same first and last name already exists" }
+      return
+    end
+
     location_ids = location_str.split(",").map { |s| Location.find_or_create_by!(name: s.strip.titleize).id }.uniq
     affiliation_ids = affil_str.split(",").map { |s| Affiliation.find_or_create_by!(name: s.strip.titleize).id }.uniq
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_02_11_120005) do
+ActiveRecord::Schema[8.1].define(version: 2025_02_11_120006) do
   create_table "affiliations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name", null: false
@@ -34,6 +34,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_02_11_120005) do
     t.datetime "updated_at", null: false
     t.string "vehicle"
     t.string "weapon"
+    t.index ["first_name", "last_name"], name: "index_people_on_first_name_and_last_name", unique: true
     t.check_constraint "gender IN ('male', 'female', 'other')", name: "people_gender_check"
   end
 
