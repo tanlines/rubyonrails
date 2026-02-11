@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   root "imports#new"
   get "import" => "imports#new", as: :import
   post "import" => "imports#create"
+
+  get "people" => "people#index", as: :people
 end

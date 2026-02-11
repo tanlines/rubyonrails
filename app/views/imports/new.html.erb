@@ -1,6 +1,8 @@
 <main style="max-width: 32rem; margin: 2rem auto; padding: 0 1rem;">
   <h1>Import characters</h1>
 
+  <p><%= link_to "View imported characters", people_path %></p>
+
   <% if flash[:notice].present? %>
     <p style="color: green;"><%= flash[:notice] %></p>
   <% end %>
